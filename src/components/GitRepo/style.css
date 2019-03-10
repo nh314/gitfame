@@ -1,6 +1,0 @@
-.item .ui.icon.button {
-  visibility: hidden;
-}
-.item:hover .ui.icon.button {
-  visibility: visible;
-}
