@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/gitfame/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "e1f6ae8ede1d29d4031b",
+    "revision": "d9645a867caa892ae69b",
     "url": "/gitfame/static/css/main.116f9823.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/gitfame/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "21c682d6a4bddbc85450",
-    "url": "/gitfame/static/js/2.21c682d6.chunk.js"
+    "revision": "0567751956469cfb74b8",
+    "url": "/gitfame/static/js/2.05677519.chunk.js"
   },
   {
     "revision": "cd6c777f1945164224dee082abaea03a",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/gitfame/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "e1f6ae8ede1d29d4031b",
-    "url": "/gitfame/static/js/main.e1f6ae8e.chunk.js"
+    "revision": "d9645a867caa892ae69b",
+    "url": "/gitfame/static/js/main.d9645a86.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -80,11 +80,11 @@ self.__precacheManifest = [
     "url": "/gitfame/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "21c682d6a4bddbc85450",
+    "revision": "0567751956469cfb74b8",
     "url": "/gitfame/static/css/2.bf785e56.chunk.css"
   },
   {
-    "revision": "a6ac91c117133d6f29c559c672c233be",
+    "revision": "e9f4f08db4217d70ffd0a9bb9ae7e64a",
     "url": "/gitfame/index.html"
   }
 ];
