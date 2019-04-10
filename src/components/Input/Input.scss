@@ -1,0 +1,40 @@
+$borderColor: #666;
+$borderWidth: 1px;
+$submitButtonWidth: 2.5rem;
+@mixin border($borderWidth, $borderColor) {
+  border: $borderWidth solid $borderColor;
+}
+
+.Input-form {
+  display: flex;
+}
+.Input {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  padding: 0.75rem $submitButtonWidth 0.75rem 0.75rem;
+  outline: none;
+  box-sizing: border-box;
+  @include border($borderWidth, $borderColor);
+}
+
+.submit-button {
+  border: none;
+  background: none;
+  margin-left: -$submitButtonWidth;
+  color: #999;
+  width: $submitButtonWidth;
+}
+
+.spinning {
+  animation: simple-spin infinite 1s ease-in-out;
+}
+
+@keyframes simple-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

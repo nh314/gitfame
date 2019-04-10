@@ -1,0 +1,76 @@
+$default-size: 10px;
+
+.Repo {
+  border: 1px solid;
+  padding: 0.5rem;
+  display: flex;
+  font-size: 0.9rem;
+}
+
+.compare-list {
+  .Repo {
+    margin-bottom: 0.5rem;
+    padding: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .Repo-name {
+    margin: 0 $default-size 0 0;
+    width: 10rem;
+    max-width: 80%;
+    display: flex;
+    flex-grow: 1.75;
+    word-break: break-all;
+    align-self: center;
+    padding: 0.5rem;
+  }
+  .Repo-btn-remove {
+    background: red;
+    margin-left: auto;
+    color: white;
+    outline: none;
+    border: none;
+    align-self: stretch;
+    padding: 0 $default-size * 2;
+    font-size: 1.5rem;
+    &:hover {
+      background-color: darkred;
+    }
+    &:active {
+      transform: scale(0.9, 0.9);
+    }
+  }
+
+  .Repo-stats {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0.5rem;
+  }
+  .Repo-stat-name {
+    display: block;
+    margin: 0 0 $default-size/2;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  .Repo-stat-value {
+    display: block;
+  }
+}
+
+.app-result-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .Repo {
+    margin: 0.5rem;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
