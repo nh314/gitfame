@@ -2,7 +2,6 @@ import React, { Component, SyntheticEvent, FormEvent, RefObject } from "react";
 import "./Input.scss";
 
 type Props = {
-  onChange?: (event: SyntheticEvent<HTMLInputElement>) => void;
   onSubmit?: (term: string) => void;
   isLoading: boolean;
   formRef: RefObject<HTMLFormElement>;
