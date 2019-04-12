@@ -1,16 +1,15 @@
 {
-  "main.css": "/gitfame/static/css/main.116f9823.chunk.css",
-  "main.js": "/gitfame/static/js/main.d9645a86.chunk.js",
-  "main.js.map": "/gitfame/static/js/main.d9645a86.chunk.js.map",
-  "runtime~main.js": "/gitfame/static/js/runtime~main.4ba3a257.js",
-  "runtime~main.js.map": "/gitfame/static/js/runtime~main.4ba3a257.js.map",
-  "static/css/2.bf785e56.chunk.css": "/gitfame/static/css/2.bf785e56.chunk.css",
-  "static/js/2.05677519.chunk.js": "/gitfame/static/js/2.05677519.chunk.js",
-  "static/js/2.05677519.chunk.js.map": "/gitfame/static/js/2.05677519.chunk.js.map",
+  "main.css": "/gitfame/static/css/main.56e6145e.chunk.css",
+  "main.js": "/gitfame/static/js/main.699a7b4e.chunk.js",
+  "main.js.map": "/gitfame/static/js/main.699a7b4e.chunk.js.map",
+  "runtime~main.js": "/gitfame/static/js/runtime~main.98ba516a.js",
+  "runtime~main.js.map": "/gitfame/static/js/runtime~main.98ba516a.js.map",
+  "static/css/2.b06722c1.chunk.css": "/gitfame/static/css/2.b06722c1.chunk.css",
+  "static/js/2.a6a139ec.chunk.js": "/gitfame/static/js/2.a6a139ec.chunk.js",
+  "static/js/2.a6a139ec.chunk.js.map": "/gitfame/static/js/2.a6a139ec.chunk.js.map",
   "index.html": "/gitfame/index.html",
-  "precache-manifest.fa661f292da8309dbcedc0b643f46ec2.js": "/gitfame/precache-manifest.fa661f292da8309dbcedc0b643f46ec2.js",
+  "precache-manifest.b58046c226564e64bd7d972d1d799013.js": "/gitfame/precache-manifest.b58046c226564e64bd7d972d1d799013.js",
   "service-worker.js": "/gitfame/service-worker.js",
-  "static/css/2.bf785e56.chunk.css.map": "/gitfame/static/css/2.bf785e56.chunk.css.map",
-  "static/css/main.116f9823.chunk.css.map": "/gitfame/static/css/main.116f9823.chunk.css.map",
-  "static/media/semantic.min.css": "/gitfame/static/media/outline-icons.ef60a4f6.woff"
+  "static/css/2.b06722c1.chunk.css.map": "/gitfame/static/css/2.b06722c1.chunk.css.map",
+  "static/css/main.56e6145e.chunk.css.map": "/gitfame/static/css/main.56e6145e.chunk.css.map"
 }
