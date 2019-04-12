@@ -9,24 +9,21 @@ it("renders without crashing", () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it("show state value correcly", () => {
-  const wrapper = shallow(<Input isLoading={false} />);
-  expect(wrapper.find("input").props().value).toEqual("");
-  wrapper.setState({ value: "bar" });
+it("show term value correcly", () => {
+  const wrapper = shallow(<Input isLoading={false} term="bar" />);
   expect(wrapper.find("input").props().value).toEqual("bar");
 });
 
-it("onChange handler work correctly", () => {
+it("onTermChange handler work correctly", () => {
   let c = "bar";
   const extraCallback = (e: SyntheticEvent<HTMLInputElement>) => {
     c += " " + e.currentTarget.value;
   };
-  const wrapper = shallow(<Input onChange={extraCallback} isLoading={false} />);
+  const wrapper = shallow(
+    <Input onTermChange={extraCallback} isLoading={false} term="bar" />
+  );
   const text = "foo";
-  wrapper.setState({ newValue: "bar" });
   wrapper.find("input").simulate("change", { currentTarget: { value: text } });
-  expect(wrapper.state("value")).toEqual(text);
-  expect(wrapper.find("input").props().value).toEqual(text);
   expect(c).toEqual("bar foo");
 });
 
