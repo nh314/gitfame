@@ -38,6 +38,12 @@ export default class Repo extends Component<Props, States> {
           this.props.onClick && this.props.onClick(e, this.props.repo);
         }}
         className="Repo"
+        title={
+          "Stars: " +
+          this.props.repo.stargazers_count.toLocaleString() +
+          " Forks: " +
+          this.props.repo.forks_count.toLocaleString()
+        }
       >
         {this.props.repo.full_name}
       </div>
