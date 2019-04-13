@@ -1,4 +1,4 @@
-# GitFame [![Build Status](https://travis-ci.com/nh314/gitfame.svg?branch=dev)](https://travis-ci.com/nh314/gitfame)
+# GitFame [![Build Status](https://travis-ci.com/nh314/gitfame.svg?branch=develop)](https://travis-ci.com/nh314/gitfame)
 
 GitFame is a tool for comparing git repositories
 
