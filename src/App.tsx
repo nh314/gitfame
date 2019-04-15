@@ -4,9 +4,11 @@ import SearchResultList from "./components/GitRepo/SearchResultList";
 import CompareList from "./components/GitRepo/CompareList";
 import { GitRepo } from "./components/GitRepo/Repo";
 import * as GitHub from "./services/github";
+import { ToastContainer, toast } from "react-toastify";
 
 import "normalize.css";
 import "./App.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 type States = {
   isLoading: boolean;
@@ -95,19 +97,17 @@ class App extends Component {
    */
   selectRepo = (repo: GitRepo) => {
     const { selectedRepos } = this.state;
-    if (typeof selectedRepos === "undefined" || selectedRepos.length < 1) {
-      this.setState({
-        selectedRepos: [repo]
+
+    const repoExists = selectedRepos.filter(
+      (element: GitRepo) => element.id == repo.id
+    );
+
+    if (repoExists.length === 0) {
+      this.setState({ selectedRepos: [...selectedRepos, repo] }, () => {
+        toast.success(repo.full_name + " was added !");
       });
     } else {
-      const repoExists = selectedRepos.filter(
-        (element: GitRepo) => element.id == repo.id
-      );
-      if (repoExists.length === 0) {
-        this.setState({
-          selectedRepos: [...selectedRepos, repo]
-        });
-      }
+      toast.warn(repo.full_name + " was added already !");
     }
   };
 
@@ -131,9 +131,11 @@ class App extends Component {
   removeRepoInComapreList = (index: number): Promise<GitRepo> => {
     const { selectedRepos } = this.state;
     const removedRepos = selectedRepos.splice(index, 1);
-    this.setState({ selectedRepos });
+
     return new Promise(resolve => {
-      resolve(removedRepos[0]);
+      this.setState({ selectedRepos }, () => {
+        resolve(removedRepos[0]);
+      });
     });
   };
 
@@ -170,9 +172,12 @@ class App extends Component {
             onSortOrderChange={this.setSortOrder}
             additionalProperty={this.state.additionalProperty}
             onRemoveButton={this.removeRepoInComapreList}
-            removeRepoCallBack={repo => console.log(repo)}
+            removeRepoCallBack={repo =>
+              toast.error(repo.full_name + " removed from the list!")
+            }
           />
         </div>
+        <ToastContainer autoClose={3000} />
       </div>
     );
   }
