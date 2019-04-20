@@ -1,5 +1,4 @@
 import { GitRepo } from "../components/GitRepo/Repo";
-import defaultData from "../data.json";
 
 type ResponseJson = {
   total_count: number;
@@ -30,7 +29,7 @@ export async function searchRepos(key: string, page = 1, record_per_page = 10) {
   const response = await fetch(apiURL, { method: "GET" });
   const responseJson: ResponseJson = await response.json();
   if (response.ok) {
-    return responseJson.items;
+    return responseJson;
   }
 
   throw new ReponseError(responseJson.message, response.status);
