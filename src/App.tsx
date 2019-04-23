@@ -17,10 +17,13 @@ type States = {
   sortProperty: string;
   sortOrder: number;
   additionalProperty?: string;
-  page: number;
   term: string;
   errorMessage: string;
+  page: number;
+  maxPage?: number;
 };
+const MAX_RESULT = 1000;
+const RESULT_PER_PAGE = 10;
 
 const searchCache: any = {};
 
@@ -53,17 +56,29 @@ class App extends Component {
 
     GitHub.searchRepos(term, currentPage)
       .then(repos => {
-        const page = currentPage.toString();
-        searchCache[term][page] = repos;
+        const page = currentPage;
+        searchCache[term][page] = repos.items;
+        let maxPage;
+        if (
+          this.state.maxPage === undefined &&
+          repos.total_count < MAX_RESULT
+        ) {
+          maxPage = Math.ceil(repos.total_count / RESULT_PER_PAGE);
+        }
+
         this.setState({
           searchResult: searchCache[term][page],
-          errorMessage: ""
+          errorMessage: "",
+          maxPage
         });
       })
       .catch(e => {
         console.log(e);
         if (e instanceof GitHub.ReponseError) {
-          this.setState({ errorMessage: "GitHub hates you !" });
+          this.setState({
+            errorMessage: "GitHub hates you !",
+            page: this.state.page - 1
+          });
         } else {
           this.setState({ errorMessage: e.message });
         }
@@ -150,7 +165,13 @@ class App extends Component {
               onSubmit={this.searchRepo}
               isLoading={this.state.isLoading}
               formRef={this.formRef}
-              onTermChange={e => this.setState({ term: e.currentTarget.value })}
+              onTermChange={e =>
+                this.setState({
+                  term: e.currentTarget.value,
+                  maxPage: undefined,
+                  page: 1
+                })
+              }
             />
           </div>
         </div>
@@ -163,6 +184,8 @@ class App extends Component {
             repos={this.state.searchResult || []}
             nextHandler={this.navigationNext}
             prevHandler={this.navigationPrev}
+            currentPage={this.state.page}
+            maxPage={this.state.maxPage}
           />
           <CompareList
             repos={this.state.selectedRepos}
