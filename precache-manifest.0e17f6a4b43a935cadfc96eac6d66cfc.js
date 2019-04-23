@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/gitfame/static/js/runtime~main.98ba516a.js"
   },
   {
-    "revision": "4f2910fa988c1ce8e080",
-    "url": "/gitfame/static/js/main.4b0d31a0.chunk.js"
+    "revision": "6eca2cfe08176cb20555",
+    "url": "/gitfame/static/js/main.9ce4eda6.chunk.js"
   },
   {
     "revision": "4a4fa1a101bdaa97a7ce",
     "url": "/gitfame/static/js/2.67b361e0.chunk.js"
   },
   {
-    "revision": "4f2910fa988c1ce8e080",
+    "revision": "6eca2cfe08176cb20555",
     "url": "/gitfame/static/css/main.56e6145e.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/gitfame/static/css/2.d6471739.chunk.css"
   },
   {
-    "revision": "7e2d54becb7ac4f04dcf11e65d6c2a0c",
+    "revision": "d165e56c06dc4bbe0f8dd5026c579629",
     "url": "/gitfame/index.html"
   }
 ];
