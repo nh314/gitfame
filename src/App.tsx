@@ -21,6 +21,8 @@ type States = {
   errorMessage: string;
   page: number;
   maxPage?: number;
+  offLineMessage?: string;
+  passedTerm?: string;
 };
 const MAX_RESULT = 1000;
 const RESULT_PER_PAGE = 10;
@@ -40,24 +42,41 @@ class App extends Component {
 
   formRef = React.createRef<HTMLFormElement>();
 
+  componentDidMount = () => {
+    console.log("App mounted");
+
+    window.addEventListener("online", this.showOnlineStatus);
+    window.addEventListener("offline", this.showOnlineStatus);
+  };
+
+  showOnlineStatus = () => {
+    const offLineMessage =
+      (!navigator.onLine && "You are currently offline !") || undefined;
+    this.setState({ offLineMessage });
+  };
+
   /**
    * Search repo using GitHub
    */
-  searchRepo = (term: string) => {
-    const currentPage = this.state.page;
+  searchRepo = (term: string, page?: number) => {
+    const usePage = (page && page) || 1;
     if (!searchCache[term]) {
       searchCache[term] = {};
-    } else if (searchCache[term][currentPage]) {
-      this.setState({ searchResult: searchCache[term][currentPage] });
+      this.setState({
+        page: 1
+      });
+    } else if (searchCache[term][usePage]) {
+      this.setState({
+        searchResult: searchCache[term][usePage]
+      });
       return;
     }
 
     this.setState({ isLoading: true });
 
-    GitHub.searchRepos(term, currentPage)
+    GitHub.searchRepos(term, usePage)
       .then(repos => {
-        const page = currentPage;
-        searchCache[term][page] = repos.items;
+        searchCache[term][usePage] = repos.items;
         let maxPage;
         if (
           this.state.maxPage === undefined &&
@@ -67,9 +86,10 @@ class App extends Component {
         }
 
         this.setState({
-          searchResult: searchCache[term][page],
+          searchResult: searchCache[term][usePage],
           errorMessage: "",
-          maxPage
+          maxPage,
+          passedTerm: term
         });
       })
       .catch(e => {
@@ -88,22 +108,17 @@ class App extends Component {
       });
   };
 
-  navigationNext = () => {
-    const form = this.formRef.current;
-    if (form && this.state.term !== "") {
-      this.setState({ page: 1 + this.state.page }, () => {
-        form.dispatchEvent(new Event("submit"));
-      });
-    }
+  navigationNext = (term: string, page: number) => {
+    const nextPage = page + 1;
+    this.setState({ page: nextPage });
+    this.searchRepo(term, nextPage);
   };
 
-  navigationPrev = () => {
-    const form = this.formRef.current;
-    const prevPag = -1 + this.state.page;
-    if (form && this.state.term !== "" && prevPag > 0) {
-      this.setState({ page: prevPag }, () => {
-        form.dispatchEvent(new Event("submit"));
-      });
+  navigationPrev = (term: string, page: number) => {
+    const prevPag = page - 1;
+    if (prevPag > 0) {
+      this.setState({ page: prevPag });
+      this.searchRepo(term, prevPag);
     }
   };
 
@@ -154,10 +169,17 @@ class App extends Component {
     });
   };
 
+  renderOfflineMessageContainer = () => {
+    if (this.state.offLineMessage) {
+      return <div className="offLineMessage">{this.state.offLineMessage}</div>;
+    }
+  };
+
   render() {
     const appErrorMessage = this.state.errorMessage;
     return (
       <div className="App">
+        {this.renderOfflineMessageContainer()}
         <div className="App-header">
           <div className="input-container">
             <Input
@@ -168,8 +190,7 @@ class App extends Component {
               onTermChange={e =>
                 this.setState({
                   term: e.currentTarget.value,
-                  maxPage: undefined,
-                  page: 1
+                  maxPage: undefined
                 })
               }
             />
@@ -186,6 +207,8 @@ class App extends Component {
             prevHandler={this.navigationPrev}
             currentPage={this.state.page}
             maxPage={this.state.maxPage}
+            passedTerm={this.state.passedTerm}
+            passedPage={this.state.page}
           />
           <CompareList
             repos={this.state.selectedRepos}
