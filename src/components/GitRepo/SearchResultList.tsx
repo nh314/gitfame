@@ -63,6 +63,7 @@ export default class SearchResultList extends Component<Props> {
                 Next
               </button>
             )}
+            {this.props.passedPage + "/" + this.props.maxPage}
           </div>
         )}
       </div>
