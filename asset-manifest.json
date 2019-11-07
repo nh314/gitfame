@@ -1,15 +1,15 @@
 {
   "main.css": "/gitfame/static/css/main.fbaa0290.chunk.css",
-  "main.js": "/gitfame/static/js/main.8b33d186.chunk.js",
-  "main.js.map": "/gitfame/static/js/main.8b33d186.chunk.js.map",
+  "main.js": "/gitfame/static/js/main.ee920b26.chunk.js",
+  "main.js.map": "/gitfame/static/js/main.ee920b26.chunk.js.map",
   "runtime~main.js": "/gitfame/static/js/runtime~main.98ba516a.js",
   "runtime~main.js.map": "/gitfame/static/js/runtime~main.98ba516a.js.map",
-  "static/css/2.d6471739.chunk.css": "/gitfame/static/css/2.d6471739.chunk.css",
+  "static/css/2.526ca0b1.chunk.css": "/gitfame/static/css/2.526ca0b1.chunk.css",
   "static/js/2.67b361e0.chunk.js": "/gitfame/static/js/2.67b361e0.chunk.js",
   "static/js/2.67b361e0.chunk.js.map": "/gitfame/static/js/2.67b361e0.chunk.js.map",
   "index.html": "/gitfame/index.html",
-  "precache-manifest.8a6585aaf31e5f4ec1298a73d897f74b.js": "/gitfame/precache-manifest.8a6585aaf31e5f4ec1298a73d897f74b.js",
+  "precache-manifest.bd0f6f4dd3e71b81449a977058bf7980.js": "/gitfame/precache-manifest.bd0f6f4dd3e71b81449a977058bf7980.js",
   "service-worker.js": "/gitfame/service-worker.js",
-  "static/css/2.d6471739.chunk.css.map": "/gitfame/static/css/2.d6471739.chunk.css.map",
+  "static/css/2.526ca0b1.chunk.css.map": "/gitfame/static/css/2.526ca0b1.chunk.css.map",
   "static/css/main.fbaa0290.chunk.css.map": "/gitfame/static/css/main.fbaa0290.chunk.css.map"
 }
