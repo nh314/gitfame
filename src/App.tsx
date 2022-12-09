@@ -225,7 +225,7 @@ class App extends Component {
             }
           />
         </div>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer />
       </div>
     );
   }

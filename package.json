@@ -19,7 +19,7 @@
     "react-redux": "^7.0.3",
     "react-scripts": "5.0.1",
     "react-test-renderer": "^16.8.6",
-    "react-toastify": "^5.0.1",
+    "react-toastify": "^9.1.1",
     "redux": "^4.0.1",
     "sass": "^1.56.2",
     "typescript": "3.4.1"
