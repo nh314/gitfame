@@ -1,5 +1,5 @@
 $borderColor: #666;
-$borderWidth: 1px;
+$borderWidth: calc(1rem / 4);
 $submitButtonWidth: 2.5rem;
 @mixin border($borderWidth, $borderColor, $borderRadius: 0px) {
   border: $borderWidth solid $borderColor;
@@ -16,7 +16,7 @@ $submitButtonWidth: 2.5rem;
   padding: 0.75rem $submitButtonWidth 0.75rem 0.75rem;
   outline: none;
   box-sizing: border-box;
-  @include border($borderWidth, $borderColor, 2rem);
+  @include border($borderWidth, $borderColor, 1rem);
 }
 
 .submit-button {
