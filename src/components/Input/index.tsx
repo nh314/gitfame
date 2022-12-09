@@ -9,7 +9,7 @@ type Props = {
   onTermChange: (event: SyntheticEvent<HTMLInputElement>) => void;
 };
 
-export default class extends Component<Props> {
+export default class Input extends Component<Props> {
   onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { term } = this.props;

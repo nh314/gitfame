@@ -20,13 +20,7 @@ export const supportedOrderProp: supportedOrderPropType = {
   open_issues: "Open issues"
 };
 
-/**
- * Filter Component
- *
- * @param {object} props React component proppertes
- * @returns {React.Component}
- */
-export default function(props: Props) {
+export default function CompareListFilter(props: Props) {
   return (
     <label>
       Sort by

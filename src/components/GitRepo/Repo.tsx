@@ -70,7 +70,7 @@ export default class Repo extends Component<Props, States> {
         }}
       >
         <div className="Repo-name">
-          <a href={repo.html_url} target="_blank">
+          <a href={repo.html_url} target="_blank" rel="noreferrer">
             {this.props.repo.full_name}
           </a>
         </div>
