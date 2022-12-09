@@ -1,5 +1,6 @@
 import React, { Component, SyntheticEvent } from "react";
 import Input from "./components/Input";
+import Logo from "./components/Logo";
 import SearchResultList from "./components/GitRepo/SearchResultList";
 import CompareList from "./components/GitRepo/CompareList";
 import { GitRepo } from "./components/GitRepo/Repo";
@@ -129,7 +130,7 @@ class App extends Component {
     const { selectedRepos } = this.state;
 
     const repoExists = selectedRepos.filter(
-      (element: GitRepo) => element.id == repo.id
+      (element: GitRepo) => element.id === repo.id
     );
 
     if (repoExists.length === 0) {
@@ -181,6 +182,7 @@ class App extends Component {
       <div className="App">
         {this.renderOfflineMessageContainer()}
         <div className="App-header">
+          <Logo description="A tool for comparing GitHub repository" />
           <div className="input-container">
             <Input
               term={this.state.term}

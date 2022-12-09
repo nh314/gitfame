@@ -1,8 +1,9 @@
 $borderColor: #666;
 $borderWidth: 1px;
 $submitButtonWidth: 2.5rem;
-@mixin border($borderWidth, $borderColor) {
+@mixin border($borderWidth, $borderColor, $borderRadius: 0px) {
   border: $borderWidth solid $borderColor;
+  border-radius: $borderRadius;
 }
 
 .Input-form {
@@ -15,7 +16,7 @@ $submitButtonWidth: 2.5rem;
   padding: 0.75rem $submitButtonWidth 0.75rem 0.75rem;
   outline: none;
   box-sizing: border-box;
-  @include border($borderWidth, $borderColor);
+  @include border($borderWidth, $borderColor, 2rem);
 }
 
 .submit-button {
