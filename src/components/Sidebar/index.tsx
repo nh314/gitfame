@@ -6,6 +6,13 @@ type Props = {
   onNewComparison: () => void;
 };
 
+// Hoisted outside component to avoid recreation on every render
+const navLinkClassName = ({ isActive }: { isActive: boolean }) =>
+  `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive
+    ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full"
+    : ""
+  }`;
+
 const Sidebar = ({ onNewComparison }: Props) => {
   return (
     <aside className="h-screen w-64 fixed left-0 top-0 bg-surface-container-low flex flex-col p-4 gap-2 font-body text-sm text-primary z-50">
@@ -20,31 +27,19 @@ const Sidebar = ({ onNewComparison }: Props) => {
       </div>
 
       <nav className="flex-1 space-y-1">
-        <NavLink
-          to="/"
-          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
-        >
+        <NavLink to="/" className={navLinkClassName}>
           <ArrowLeftRight size={20} />
           <span>Compare</span>
         </NavLink>
-        <NavLink
-          to="/explore"
-          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
-        >
+        <NavLink to="/explore" className={navLinkClassName}>
           <Compass size={20} />
           <span>Explore</span>
         </NavLink>
-        <NavLink
-          to="/history"
-          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
-        >
+        <NavLink to="/history" className={navLinkClassName}>
           <History size={20} />
           <span>History</span>
         </NavLink>
-        <NavLink
-          to="/bookmarks"
-          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
-        >
+        <NavLink to="/bookmarks" className={navLinkClassName}>
           <Bookmark size={20} />
           <span>Bookmarks</span>
         </NavLink>

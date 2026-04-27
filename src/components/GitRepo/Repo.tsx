@@ -56,7 +56,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
   const renderForCompareList = () => {
     // Default stats to show in 2x2 grid
     const statsToShow = ["stargazers_count", "forks_count", "watchers", "open_issues"];
-    
+
     // Add additional property if selected and not already in stats
     if (additionalProperty && !statsToShow.includes(additionalProperty)) {
       statsToShow[3] = additionalProperty;
@@ -74,7 +74,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
         >
           <X size={14} />
         </button>
-        
+
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-primary-container flex items-center justify-center rounded-lg text-on-primary-container font-bold text-xl uppercase">
@@ -89,7 +89,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
             <ExternalLink size={20} />
           </a>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-4">
           {statsToShow.map((propertyName, index) => (
             <div key={index} className="bg-surface-container-low p-4 rounded-lg">
@@ -104,7 +104,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
             </div>
           ))}
         </div>
-        
+
         <div className="pt-2">
           <div className="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
             <div className="h-full bg-primary transition-all duration-1000" style={{ width: `${sentimentScore}%` }}></div>

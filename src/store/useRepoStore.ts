@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { GitRepo } from '../components/GitRepo/Repo';
 import * as GitHub from '../services/github';
-import { toast } from 'react-toastify';
 
 const MAX_RESULT = 1000;
 const RESULT_PER_PAGE = 10;
@@ -106,9 +105,11 @@ export const useRepoStore = create<RepoStoreState>((set, get) => ({
         searchResult: [], // Clear search results on selection
         term: '', // Clear search term visually
       });
-      toast.success(`${repo.full_name} was added !`);
+      import('react-toastify').then(({ toast }) =>
+        toast.success(`${repo.full_name} was added !`));
     } else {
-      toast.warn(`${repo.full_name} was added already !`);
+      import('react-toastify').then(({ toast }) =>
+        toast.warn(`${repo.full_name} was added already !`));
     }
   },
 

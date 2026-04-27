@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { GitRepo } from '../GitRepo/Repo';
 import { Brain, BadgeCheck, Calendar } from 'lucide-react';
 
@@ -9,9 +9,16 @@ type Props = {
 export default function ArchitectSummary({ repos }: Props) {
   if (!repos || repos.length === 0) return null;
 
-  // Simple mock analysis logic based on repo stats
-  const dominantRepo = [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count)[0];
-  const mostActiveRepo = [...repos].sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime())[0];
+  // O(n) loop instead of two O(n log n) sorts — only need min/max
+  const { dominantRepo, mostActiveRepo } = useMemo(() => {
+    let dominant = repos[0];
+    let mostActive = repos[0];
+    for (const repo of repos) {
+      if (repo.stargazers_count > dominant.stargazers_count) dominant = repo;
+      if (new Date(repo.pushed_at).getTime() > new Date(mostActive.pushed_at).getTime()) mostActive = repo;
+    }
+    return { dominantRepo: dominant, mostActiveRepo: mostActive };
+  }, [repos]);
 
   return (
     <div className="bg-primary/5 rounded-xl p-8 border border-primary-fixed-dim/30 flex flex-col md:flex-row items-start gap-6">
@@ -21,7 +28,7 @@ export default function ArchitectSummary({ repos }: Props) {
       <div className="space-y-3">
         <h4 className="text-xl font-headline font-bold text-on-surface">Architect's Summary</h4>
         <p className="text-on-surface-variant font-body leading-relaxed max-w-4xl">
-          Based on the comparison, <strong>{dominantRepo?.name}</strong> maintains a significantly larger ecosystem and contributor base with {dominantRepo?.stargazers_count.toLocaleString()} stars. 
+          Based on the comparison, <strong>{dominantRepo?.name}</strong> maintains a significantly larger ecosystem and contributor base with {dominantRepo?.stargazers_count.toLocaleString()} stars.
           {repos.length > 1 && mostActiveRepo && dominantRepo?.id !== mostActiveRepo?.id && (
             <span> However, <strong>{mostActiveRepo.name}</strong> shows more recent development activity.</span>
           )}

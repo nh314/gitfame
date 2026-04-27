@@ -28,13 +28,11 @@ export default function CompareListFilter(props: Props) {
         <div className="hidden items-center gap-2 mr-4 text-sm text-on-surface-variant">
           <label>Sort by</label>
           <select className="bg-surface-container-lowest border border-outline-variant/30 rounded py-1 px-2 text-xs" onChange={props.onSortPropertyChange}>
-            {Object.keys(supportedOrderProp).map((k, i) => {
-              return (
-                <option key={i} value={k}>
-                  {supportedOrderProp[k]}
-                </option>
-              );
-            })}
+            {Object.entries(supportedOrderProp).map(([key, label]) => (
+              <option key={key} value={key}>
+                {label}
+              </option>
+            ))}
           </select>
           <select className="bg-surface-container-lowest border border-outline-variant/30 rounded py-1 px-2 text-xs" onChange={props.onSortOrderChange}>
             <option value="1">DESC</option>
