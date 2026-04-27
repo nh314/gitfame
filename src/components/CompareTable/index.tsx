@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { GitRepo } from '../GitRepo/Repo';
 
 type Props = {
@@ -7,6 +7,13 @@ type Props = {
 
 export default function CompareTable({ repos }: Props) {
   if (!repos || repos.length === 0) return null;
+
+  // Memoize formatted dates to avoid re-parsing strings in render loop
+  const formattedDates = useMemo(() => {
+    return repos.map(repo => 
+      repo.updated_at ? new Date(repo.updated_at).toLocaleDateString() : 'Unknown'
+    );
+  }, [repos]);
 
   return (
     <div className="overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
@@ -35,9 +42,9 @@ export default function CompareTable({ repos }: Props) {
             </tr>
             <tr className="hover:bg-surface-container-low/50 transition-colors">
               <td className="py-4 px-6 text-on-surface-variant font-medium border-b border-outline-variant/5">Last Updated</td>
-              {repos.map(repo => (
+              {repos.map((repo, index) => (
                 <td key={repo.id} className="py-4 px-6 text-on-surface font-semibold border-b border-outline-variant/5">
-                  {repo.updated_at ? new Date(repo.updated_at).toLocaleDateString() : 'Unknown'}
+                  {formattedDates[index]}
                 </td>
               ))}
             </tr>

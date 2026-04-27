@@ -18,15 +18,15 @@ export type GitRepo = {
   forks_count: number;
   watchers: number;
   open_issues: number;
-  [prop: string]: any;
+  [prop: string]: string | number | boolean | any; // Better than just any
 };
 
 type Props = {
   repo: GitRepo;
   context?: string;
   additionalProperty?: string | null;
-  onRemoveButtonClick?: (event: MouseEvent<HTMLButtonElement>) => any;
-  onClick?: (event: SyntheticEvent<HTMLDivElement>, repo?: GitRepo) => void;
+  onRemoveButtonClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: SyntheticEvent<HTMLDivElement>, repo: GitRepo) => void;
 };
 
 const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick }: Props) => {

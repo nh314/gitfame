@@ -1,4 +1,3 @@
-//@flow
 import React, { SyntheticEvent, useMemo } from "react";
 import Repo, { GitRepo } from "./Repo";
 import Filter from "./CompareListFilter";

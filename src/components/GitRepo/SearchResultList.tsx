@@ -42,7 +42,7 @@ const SearchResultList = ({
         ))}
       </div>
       
-      {repos.length > 0 && (
+      {repos.length > 0 ? (
         <div className="flex items-center justify-between px-4 py-2 bg-surface-container-low border-t border-outline-variant/10 text-sm">
           <button
             className={`px-3 py-1 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors ${currentPage <= minPage ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -70,7 +70,7 @@ const SearchResultList = ({
             Next
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
