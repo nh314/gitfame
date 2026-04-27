@@ -13,7 +13,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
-    workspace: [{
+    projects: [{
       extends: true,
       test: {
         globals: true,

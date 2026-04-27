@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { withRouter } from 'storybook-addon-remix-react-router';
 import Sidebar from './index';
 
 const meta = {
@@ -8,7 +7,6 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [withRouter],
   tags: ['autodocs'],
   argTypes: {
     onNewComparison: { action: 'clicked new comparison' },
