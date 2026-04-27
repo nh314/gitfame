@@ -4,6 +4,7 @@ import Repo, { GitRepo } from "./Repo";
 import Filter from "./CompareListFilter";
 import CompareTable from "../CompareTable";
 import ArchitectSummary from "../ArchitectSummary";
+import { Plus } from "lucide-react";
 
 type Props = {
   repos?: Array<GitRepo>;
@@ -58,7 +59,7 @@ const CompareList = ({
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
       <div className="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-        <span className="material-symbols-outlined" style={{ fontSize: '2rem' }}>add</span>
+        <Plus size={32} strokeWidth={1.5} />
       </div>
       <div className="text-center">
         <p className="font-headline font-bold text-on-surface">Add Repository</p>

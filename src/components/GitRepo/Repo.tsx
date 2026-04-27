@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, MouseEvent } from "react";
 import { supportedOrderProp } from "./CompareListFilter";
+import { Star, GitFork, X, ExternalLink } from "lucide-react";
 
 type GitRepoOwner = {
   html_url: string;
@@ -45,8 +46,8 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
       >
         <div className="font-semibold text-on-surface">{repo.full_name}</div>
         <div className="text-xs text-on-surface-variant mt-1 flex gap-4">
-          <span className="flex items-center gap-1"><span className="material-symbols-outlined text-[14px]">star</span> {repo.stargazers_count.toLocaleString()}</span>
-          <span className="flex items-center gap-1"><span className="material-symbols-outlined text-[14px]">fork_right</span> {repo.forks_count.toLocaleString()}</span>
+          <span className="flex items-center gap-1"><Star size={14} /> {repo.stargazers_count.toLocaleString()}</span>
+          <span className="flex items-center gap-1"><GitFork size={14} /> {repo.forks_count.toLocaleString()}</span>
         </div>
       </div>
     );
@@ -71,7 +72,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
           onClick={onRemoveButtonClick}
           title="Remove"
         >
-          <span className="material-symbols-outlined text-sm">close</span>
+          <X size={14} />
         </button>
         
         <div className="flex items-center justify-between">
@@ -85,7 +86,7 @@ const Repo = ({ repo, context, additionalProperty, onRemoveButtonClick, onClick 
             </div>
           </div>
           <a href={repo.html_url} target="_blank" rel="noreferrer" className="text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity hover:text-primary">
-            <span className="material-symbols-outlined">open_in_new</span>
+            <ExternalLink size={20} />
           </a>
         </div>
         

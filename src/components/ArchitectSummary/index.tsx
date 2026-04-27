@@ -1,5 +1,6 @@
 import React from 'react';
 import { GitRepo } from '../GitRepo/Repo';
+import { Brain, BadgeCheck, Calendar } from 'lucide-react';
 
 type Props = {
   repos: GitRepo[];
@@ -15,7 +16,7 @@ export default function ArchitectSummary({ repos }: Props) {
   return (
     <div className="bg-primary/5 rounded-xl p-8 border border-primary-fixed-dim/30 flex flex-col md:flex-row items-start gap-6">
       <div className="w-12 h-12 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
-        <span className="material-symbols-outlined text-[24px]">psychology</span>
+        <Brain size={24} />
       </div>
       <div className="space-y-3">
         <h4 className="text-xl font-headline font-bold text-on-surface">Architect's Summary</h4>
@@ -30,11 +31,11 @@ export default function ArchitectSummary({ repos }: Props) {
         </p>
         <div className="flex flex-wrap gap-4 pt-2">
           <div className="flex items-center gap-2 text-xs font-bold text-primary">
-            <span className="material-symbols-outlined text-sm">verified</span>
+            <BadgeCheck size={16} />
             <span>VERIFIED METRICS</span>
           </div>
           <div className="flex items-center gap-2 text-xs font-bold text-on-surface-variant">
-            <span className="material-symbols-outlined text-sm">calendar_today</span>
+            <Calendar size={16} />
             <span>DATA SYNCED JUST NOW</span>
           </div>
         </div>

@@ -28,9 +28,9 @@ it("onTermChange handler work correctly", () => {
 it("shows icon correctly", () => {
   const { rerender, container } = render(<Input isLoading={false} term="" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
   
-  expect(container.querySelector("span.material-symbols-outlined")?.textContent).toEqual("search");
+  expect(container.querySelector("svg.lucide-search")).toBeInTheDocument();
   
   rerender(<Input isLoading={true} term="" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
   
-  expect(container.querySelector("span.material-symbols-outlined")?.textContent).toEqual("progress_activity");
+  expect(container.querySelector("svg.lucide-loader")).toBeInTheDocument();
 });

@@ -1,4 +1,5 @@
 import React, { SyntheticEvent, FormEvent, RefObject } from "react";
+import { Search, Loader } from "lucide-react";
 
 type Props = {
   onSubmit?: (term: string) => void;
@@ -16,7 +17,6 @@ const Input = ({ onSubmit, isLoading, formRef, term, onTermChange }: Props) => {
     }
   };
 
-  const iconClass = !isLoading ? "search" : "progress_activity";
 
   return (
     <form
@@ -24,9 +24,9 @@ const Input = ({ onSubmit, isLoading, formRef, term, onTermChange }: Props) => {
       onSubmit={handleSubmit}
       ref={formRef}
     >
-      <span className={`material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg ${isLoading ? 'animate-spin' : ''}`}>
-        {iconClass}
-      </span>
+      <div className={`absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant ${isLoading ? 'animate-spin' : ''}`}>
+        {isLoading ? <Loader size={18} /> : <Search size={18} />}
+      </div>
       <input
         className="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/15 focus:border-primary py-2 pl-10 pr-4 text-sm font-body outline-none"
         placeholder="Search repositories to add..."
