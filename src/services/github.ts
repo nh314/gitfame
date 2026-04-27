@@ -34,3 +34,9 @@ export async function searchRepos(key: string, page = 1, record_per_page = 10) {
 
   throw new ReponseError(responseJson.message, response.status);
 }
+
+// Fetcher function for SWR
+export const fetchRepos = async (key: string, page: number = 1): Promise<GitRepo[]> => {
+  const response = await searchRepos(key, page);
+  return response.items;
+};

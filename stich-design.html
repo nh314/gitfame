@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>RepoArchitect | Repo Comparison</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Manrope:wght@200..800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#526074",
+                        "on-tertiary-container": "#4a4a65",
+                        "surface-container-highest": "#d9e4ea",
+                        "secondary-fixed": "#d5e3fc",
+                        "background": "#f7f9fb",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface-variant": "#566166",
+                        "on-primary-container": "#4a5167",
+                        "inverse-primary": "#dae2fd",
+                        "inverse-on-surface": "#9a9d9f",
+                        "on-tertiary": "#fbf7ff",
+                        "on-secondary": "#f8f8ff",
+                        "on-secondary-container": "#455367",
+                        "on-error-container": "#752121",
+                        "inverse-surface": "#0b0f10",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "outline": "#717c82",
+                        "on-primary-fixed": "#373f54",
+                        "on-tertiary-fixed-variant": "#54546f",
+                        "primary-dim": "#4a5268",
+                        "secondary-container": "#d5e3fc",
+                        "surface-dim": "#cfdce3",
+                        "error": "#9f403d",
+                        "tertiary-fixed": "#d9d7f8",
+                        "on-primary": "#f7f7ff",
+                        "surface-container": "#e8eff3",
+                        "tertiary": "#5d5d78",
+                        "error-container": "#fe8983",
+                        "tertiary-container": "#d9d7f8",
+                        "surface": "#f7f9fb",
+                        "primary-container": "#dae2fd",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#d9e4ea",
+                        "primary": "#565e74",
+                        "primary-fixed-dim": "#ccd4ee",
+                        "surface-tint": "#565e74",
+                        "outline-variant": "#a9b4b9",
+                        "on-secondary-fixed": "#324053",
+                        "surface-container-high": "#e1e9ee",
+                        "on-surface": "#2a3439",
+                        "secondary-dim": "#465468",
+                        "on-tertiary-fixed": "#373851",
+                        "on-error": "#fff7f6",
+                        "surface-container-low": "#f0f4f7",
+                        "on-primary-fixed-variant": "#535b71",
+                        "error-dim": "#4e0309",
+                        "on-background": "#2a3439",
+                        "tertiary-dim": "#51516c",
+                        "tertiary-fixed-dim": "#cbc9e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #2a3439;
+        }
+
+        .font-headline {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .material-symbols-outlined {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface">
+    <!-- SideNavBar (Shared Component) -->
+    <aside
+        class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low flex flex-col p-4 gap-2 font-body text-sm text-primary z-50">
+        <div class="flex items-center gap-3 px-2 mb-6">
+            <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+                <span class="material-symbols-outlined">architecture</span>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold text-on-surface font-headline leading-tight">Corporate Dev</h2>
+                <p class="text-[10px] text-on-surface-variant tracking-wider uppercase">Enterprise Tier</p>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-3 py-2 bg-surface-container-lowest text-on-surface font-semibold rounded-lg transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+                <span>Compare</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="explore">explore</span>
+                <span>Explore</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="history">history</span>
+                <span>History</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+                <span>Bookmarks</span>
+            </a>
+        </nav>
+        <button
+            class="w-full py-2.5 px-4 mt-4 bg-gradient-to-br from-primary to-primary-dim text-on-primary rounded-lg font-medium text-sm flex items-center justify-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-sm">add</span>
+            New Comparison
+        </button>
+        <div class="mt-auto border-t border-outline-variant/15 pt-4 space-y-1">
+            <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+                <span>Support</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high transition-transform duration-150"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="description">description</span>
+                <span>Documentation</span>
+            </a>
+        </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="ml-64 min-h-screen">
+        <!-- TopAppBar (Shared Component) -->
+        <header
+            class="w-full sticky top-0 z-40 bg-surface-container-low/80 backdrop-blur-md flex justify-between items-center px-8 h-16 font-headline tracking-tight">
+            <div class="flex items-center gap-8 flex-1">
+                <span class="text-xl font-bold text-on-surface">RepoArchitect</span>
+                <div class="relative w-full max-w-xl">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+                    <input
+                        class="w-full bg-surface-container-lowest border-none border-b-2 border-outline-variant/15 focus:ring-0 focus:border-primary py-2 pl-10 pr-4 text-sm font-body"
+                        placeholder="Search repositories to add..." type="text" />
+                </div>
+            </div>
+            <div class="flex items-center gap-4 ml-6">
+                <button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                </button>
+                <button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors">
+                    <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                </button>
+                <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+                    <img alt="User profile" class="w-full h-full object-cover"
+                        data-alt="professional headshot of a developer in a modern workspace with natural light"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6d5Weo__kHw_3_S40FWpBDeAYCDrKviGvaKXiBzAKsTBYvxCAa27yADxDB9GjfNvMz9vuoUKcMLBcOpI5k_DMI568px49liz1JGtyjU8IkBMes-KG50xQ-J1vttAcH1nyXWh7h1pISAJARb-_xT_yjetAX2XbsQ2LhvnOrKbE6iIQnZ3bq9-jW-sle7FSHUOh_X9Sot1AeJsxzNv6Bv3gnkk7O1aEeCHYqQSBXkNXCXYfHCXOpW17L-bnDr0j8m7aZivG8LhyaZam" />
+                </div>
+            </div>
+        </header>
+        <!-- Comparison Canvas -->
+        <div class="p-10 space-y-12">
+            <!-- Page Header -->
+            <section class="space-y-2">
+                <h1 class="text-4xl font-headline font-extrabold text-on-surface">Repository Benchmarking</h1>
+                <p class="text-on-surface-variant font-body">Technical audit and performance comparison between leading
+                    frameworks.</p>
+            </section>
+            <!-- Main Comparison Bento Grid -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Repo Card 1: React -->
+                <div
+                    class="bg-surface-container-lowest p-6 rounded-xl space-y-6 transition-all duration-300 hover:bg-surface-container-high group border border-outline-variant/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-primary-container flex items-center justify-center rounded-lg">
+                                <img alt="React Logo" class="w-8 h-8 object-contain"
+                                    data-alt="minimalist react framework logo on a clean white background"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuATkKFNum99ayn2KPtepRoAMona84gHoz-34O32XPfppOO7ybPJg8gFwiAAAOcRqMPAijxGVP8Y1ajOl87yZAelwbmwdv68wfyhTEUYktxeD0fCb1ekKr_UkP_BtPkpGsSgkFQUCqLsfG_aITw8gGjjKI9x6MuNe5sN7BmAi2F-zjJx_KRG-Zq7am-xy96MgSYyk6dYWHhAor05fORUYoGmxAmCHbUxlQwlUYDFNMCEkxgwKA4SY8epmyFLP0Za7pf_7r5qwPpZgoEQ" />
+                            </div>
+                            <div>
+                                <h3 class="font-headline font-bold text-xl text-on-surface">facebook/react</h3>
+                                <p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">
+                                    JavaScript Library</p>
+                            </div>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">Stars
+                            </p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-headline font-bold text-on-surface">214k</span>
+                                <span class="text-[10px] text-secondary font-medium">+1.2%</span>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">Forks
+                            </p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">45.2k</span>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">
+                                Watchers</p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">6.7k</span>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">
+                                Issues</p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">1.1k</span>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-[88%]"></div>
+                        </div>
+                        <p class="text-[10px] mt-2 text-on-surface-variant font-medium">88% Community Sentiment Score
+                        </p>
+                    </div>
+                </div>
+                <!-- Repo Card 2: Vue -->
+                <div
+                    class="bg-surface-container-lowest p-6 rounded-xl space-y-6 transition-all duration-300 hover:bg-surface-container-high group border border-outline-variant/10">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-tertiary-container flex items-center justify-center rounded-lg">
+                                <img alt="Vue Logo" class="w-8 h-8 object-contain"
+                                    data-alt="minimalist vue framework logo on a clean white background"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGJe-aHJ17lYW_fJtzxzlJ08BdFlCXaV8LHOusqjClsGGQ2uHZ7hcbPmFuwpmS4-U4UWBtslIbaWGj3yqDDszu7wLgQ0uFMR6dWDCu-rbpMNneyaz9rJiCQmQU9CIs8ZNEReFE9NaJ1hz0qYnh7ZKTInbQgE_UUlJZYlrTboBXdEk4d0Ip7bjK8A2dOv2USB9CSpahTJRSZ_BONpfTCfkkk1vGFk8bafZPeoQZrq9MqMM32cqwGVYCfR4vaWehUuFcxuSbtoBLHjsn" />
+                            </div>
+                            <div>
+                                <h3 class="font-headline font-bold text-xl text-on-surface">vuejs/core</h3>
+                                <p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">
+                                    Progressive Framework</p>
+                            </div>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">Stars
+                            </p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-2xl font-headline font-bold text-on-surface">41.8k</span>
+                                <span class="text-[10px] text-secondary font-medium">+0.8%</span>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">Forks
+                            </p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">7.4k</span>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">
+                                Watchers</p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">1.2k</span>
+                        </div>
+                        <div class="bg-surface-container-low p-4 rounded-lg">
+                            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tight mb-1">
+                                Issues</p>
+                            <span class="text-2xl font-headline font-bold text-on-surface">582</span>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-[92%]"></div>
+                        </div>
+                        <p class="text-[10px] mt-2 text-on-surface-variant font-medium">92% Community Sentiment Score
+                        </p>
+                    </div>
+                </div>
+                <!-- Empty Add Card -->
+                <div
+                    class="bg-surface-container-low border-2 border-dashed border-outline-variant/30 rounded-xl flex flex-col items-center justify-center p-6 space-y-4 hover:bg-surface-container transition-colors cursor-pointer group">
+                    <div
+                        class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined" style="font-size: 2rem;">add</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-headline font-bold text-on-surface">Add Repository</p>
+                        <p class="text-xs text-on-surface-variant px-8 mt-1">Select another repository to compare
+                            architectural metrics.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Detailed Breakdown Section -->
+            <section class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-headline font-bold text-on-surface">Structural Analysis</h2>
+                    <div class="flex gap-2">
+                        <button
+                            class="px-4 py-1.5 text-xs font-semibold bg-surface-container-lowest text-on-surface-variant rounded border border-outline-variant/10 hover:bg-surface-container-high transition-colors">Export
+                            CSV</button>
+                        <button
+                            class="px-4 py-1.5 text-xs font-semibold bg-primary text-on-primary rounded shadow-sm hover:opacity-90 transition-opacity">Share
+                            Audit</button>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface-container-low">
+                                <th
+                                    class="py-4 px-6 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10">
+                                    Metric</th>
+                                <th
+                                    class="py-4 px-6 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10">
+                                    facebook/react</th>
+                                <th
+                                    class="py-4 px-6 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10">
+                                    vuejs/core</th>
+                                <th
+                                    class="py-4 px-6 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10">
+                                    Analysis</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-body">
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-4 px-6 text-on-surface-variant font-medium">License</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">MIT</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">MIT</td>
+                                <td class="py-4 px-6">
+                                    <span
+                                        class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Identical</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-4 px-6 text-on-surface-variant font-medium">Last Commit</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">2 hours ago</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">14 hours ago</td>
+                                <td class="py-4 px-6">
+                                    <div class="flex items-center gap-2 text-primary">
+                                        <span class="material-symbols-outlined text-sm">trending_up</span>
+                                        <span class="text-[10px] font-bold uppercase">React more active</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-4 px-6 text-on-surface-variant font-medium">Contributors</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">1,624</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">415</td>
+                                <td class="py-4 px-6">
+                                    <span class="text-[10px] text-on-surface-variant italic">Scale disparity: 4:1</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-4 px-6 text-on-surface-variant font-medium">Bundle Size (Gzipped)</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">42.2 KB</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">33.9 KB</td>
+                                <td class="py-4 px-6">
+                                    <div class="flex items-center gap-2 text-secondary">
+                                        <span class="material-symbols-outlined text-sm">bolt</span>
+                                        <span class="text-[10px] font-bold uppercase">Vue Optimized</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-4 px-6 text-on-surface-variant font-medium">Weekly Downloads</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">21.8M</td>
+                                <td class="py-4 px-6 text-on-surface font-semibold">4.2M</td>
+                                <td class="py-4 px-6">
+                                    <span class="text-[10px] text-on-surface-variant italic font-medium">Enterprise
+                                        dominance</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- Bottom Insight Card -->
+            <section class="bg-primary/5 rounded-xl p-8 border border-primary-fixed-dim/30 flex items-start gap-6">
+                <div
+                    class="w-12 h-12 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">psychology</span>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-xl font-headline font-bold text-on-surface">Architect's Summary</h4>
+                    <p class="text-on-surface-variant font-body leading-relaxed max-w-4xl">
+                        React maintains a significantly larger ecosystem and contributor base, making it the safer
+                        choice for large-scale enterprise projects where long-term stability and hiring are priorities.
+                        However, Vue demonstrates superior performance optimization in bundle size and community
+                        sentiment, often leading to faster development cycles for focused application scopes.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <div class="flex items-center gap-2 text-xs font-bold text-primary">
+                            <span class="material-symbols-outlined text-sm">verified</span>
+                            <span>VERIFIED METRICS</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs font-bold text-on-surface-variant">
+                            <span class="material-symbols-outlined text-sm">calendar_today</span>
+                            <span>DATA SYNCED 4M AGO</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- Contextual FAB (Hidden as per requirement for Details/Transactions, but kept if user navigates home) -->
+    <!-- Suppression logic applied: HIDDEN for focused audit view -->
+</body>
+
+</html>

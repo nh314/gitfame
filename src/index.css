@@ -1,14 +1,112 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss";
+@theme {
+  --color-secondary: #526074;
+  --color-on-tertiary-container: #4a4a65;
+  --color-surface-container-highest: #d9e4ea;
+  --color-secondary-fixed: #d5e3fc;
+  --color-background: #f7f9fb;
+  --color-primary-fixed: #dae2fd;
+  --color-on-surface-variant: #566166;
+  --color-on-primary-container: #4a5167;
+  --color-inverse-primary: #dae2fd;
+  --color-inverse-on-surface: #9a9d9f;
+  --color-on-tertiary: #fbf7ff;
+  --color-on-secondary: #f8f8ff;
+  --color-on-secondary-container: #455367;
+  --color-on-error-container: #752121;
+  --color-inverse-surface: #0b0f10;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-secondary-fixed-variant: #4e5c71;
+  --color-secondary-fixed-dim: #c7d5ed;
+  --color-outline: #717c82;
+  --color-on-primary-fixed: #373f54;
+  --color-on-tertiary-fixed-variant: #54546f;
+  --color-primary-dim: #4a5268;
+  --color-secondary-container: #d5e3fc;
+  --color-surface-dim: #cfdce3;
+  --color-error: #9f403d;
+  --color-tertiary-fixed: #d9d7f8;
+  --color-on-primary: #f7f7ff;
+  --color-surface-container: #e8eff3;
+  --color-tertiary: #5d5d78;
+  --color-error-container: #fe8983;
+  --color-tertiary-container: #d9d7f8;
+  --color-surface: #f7f9fb;
+  --color-primary-container: #dae2fd;
+  --color-surface-bright: #f7f9fb;
+  --color-surface-variant: #d9e4ea;
+  --color-primary: #565e74;
+  --color-primary-fixed-dim: #ccd4ee;
+  --color-surface-tint: #565e74;
+  --color-outline-variant: #a9b4b9;
+  --color-on-secondary-fixed: #324053;
+  --color-surface-container-high: #e1e9ee;
+  --color-on-surface: #2a3439;
+  --color-secondary-dim: #465468;
+  --color-on-tertiary-fixed: #373851;
+  --color-on-error: #fff7f6;
+  --color-surface-container-low: #f0f4f7;
+  --color-on-primary-fixed-variant: #535b71;
+  --color-error-dim: #4e0309;
+  --color-on-background: #2a3439;
+  --color-tertiary-dim: #51516c;
+  --color-tertiary-fixed-dim: #cbc9e9;
+
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Inter', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Tailwind v4 workaround: hover: utilities for @theme custom colors
+   generate duplicate empty CSS blocks. Using @apply in @layer components
+   bypasses this issue. See: tailwindcss.com/docs/reusing-styles */
+@layer components {
+  .hover-surface:hover {
+    @apply bg-surface-container-high;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-body bg-surface text-on-surface;
+  }
+
+  /* Accessibility: Prefers Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary-dim;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fade-in 0.4s ease-out forwards, slide-in-from-top-2 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-from-top-2 {
+    from {
+      transform: translateY(-0.5rem);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 }

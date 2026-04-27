@@ -1,19 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import LogoImage from "../../assets/images/gitfamelogo.png";
-import "./Logo.scss"
 
-class LogoProps {
-    description!: string;
-}
+type LogoProps = {
+  description?: string;
+};
 
-export default class Logo extends Component<LogoProps> {
+const Logo = ({ description }: LogoProps) => {
+  return (
+    <div className="flex items-center">
+      <img className="h-8 w-auto" src={LogoImage} alt="GitFame Logo" />
+      {description && <div className="text-sm">{description}</div>}
+    </div>
+  );
+};
 
-    render() {
-        return (
-            <a className="Logo" href="/">
-                <img className="LogoImage" src={LogoImage} alt="site_config" />
-                <div className="Description">{this.props.description}</div>
-            </a>
-        )
-    }
-}
+export default Logo;

@@ -1,37 +1,36 @@
-import React, { SyntheticEvent } from "react";
-import ReactDOM from "react-dom";
-import { shallow } from "enzyme";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Input from "..";
 
 it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<Input isLoading={false} />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  render(<Input isLoading={false} term="" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
 });
 
-it("show term value correcly", () => {
-  const wrapper = shallow(<Input isLoading={false} term="bar" />);
-  expect(wrapper.find("input").props().value).toEqual("bar");
+it("show term value correctly", () => {
+  render(<Input isLoading={false} term="bar" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
+  expect(screen.getByRole("textbox")).toHaveValue("bar");
 });
 
 it("onTermChange handler work correctly", () => {
   let c = "bar";
-  const extraCallback = (e: SyntheticEvent<HTMLInputElement>) => {
-    c += " " + e.currentTarget.value;
+  const extraCallback = (e: any) => {
+    c += " " + e.target.value;
   };
-  const wrapper = shallow(
-    <Input onTermChange={extraCallback} isLoading={false} term="bar" />
-  );
-  const text = "foo";
-  wrapper.find("input").simulate("change", { currentTarget: { value: text } });
+  
+  render(<Input onTermChange={extraCallback} isLoading={false} term="bar" formRef={React.createRef<HTMLFormElement>()} />);
+  
+  const input = screen.getByRole("textbox");
+  fireEvent.change(input, { target: { value: "foo" } });
+  
   expect(c).toEqual("bar foo");
 });
 
 it("shows icon correctly", () => {
-  let wrapper = shallow(<Input isLoading={false} />);
-  expect(wrapper.find("i.fas").hasClass("fa-search")).toEqual(true);
-  expect(wrapper.find("i.fas").hasClass("fa-spinner")).toEqual(false);
-  wrapper.setProps({ isLoading: true });
-  expect(wrapper.find("i.fas").hasClass("fa-search")).toEqual(false);
-  expect(wrapper.find("i.fas").hasClass("fa-spinner")).toEqual(true);
+  const { rerender, container } = render(<Input isLoading={false} term="" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
+  
+  expect(container.querySelector("span.material-symbols-outlined")?.textContent).toEqual("search");
+  
+  rerender(<Input isLoading={true} term="" onTermChange={() => {}} formRef={React.createRef<HTMLFormElement>()} />);
+  
+  expect(container.querySelector("span.material-symbols-outlined")?.textContent).toEqual("progress_activity");
 });
