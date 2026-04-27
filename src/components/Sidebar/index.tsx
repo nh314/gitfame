@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 
 type Props = {
   onNewComparison: () => void;
@@ -20,34 +20,29 @@ const Sidebar = ({ onNewComparison }: Props) => {
 
       <nav className="flex-1 space-y-1">
         <NavLink
-          exact
           to="/"
-          className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative"
-          activeClassName="bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full"
+          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
         >
           <span className="material-symbols-outlined">compare_arrows</span>
           <span>Compare</span>
         </NavLink>
         <NavLink
           to="/explore"
-          className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative"
-          activeClassName="bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full"
+          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
         >
           <span className="material-symbols-outlined">explore</span>
           <span>Explore</span>
         </NavLink>
         <NavLink
           to="/history"
-          className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative"
-          activeClassName="bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full"
+          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
         >
           <span className="material-symbols-outlined">history</span>
           <span>History</span>
         </NavLink>
         <NavLink
           to="/bookmarks"
-          className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative"
-          activeClassName="bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full"
+          className={({ isActive }) => `flex items-center gap-3 px-3 py-2 text-on-surface-variant hover-surface transition-colors duration-150 rounded-lg relative ${isActive ? "bg-white text-on-surface font-semibold shadow-sm before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary before:rounded-r-full" : ""}`}
         >
           <span className="material-symbols-outlined">bookmark</span>
           <span>Bookmarks</span>

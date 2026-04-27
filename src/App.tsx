@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
 import Sidebar from "./components/Sidebar";
 import TopBar from "./components/TopBar";
 import CompareList from "./components/GitRepo/CompareList";
@@ -98,8 +98,8 @@ const App = () => {
           )}
           
           <div className="flex-1">
-            <Switch>
-              <Route exact path="/">
+            <Routes>
+              <Route path="/" element={
                 <div className="p-10 space-y-12">
                   <section className="space-y-2">
                     <h1 className="text-4xl font-headline font-extrabold text-on-surface">Repository Benchmarking</h1>
@@ -116,11 +116,11 @@ const App = () => {
                     onRemoveButton={removeRepoInCompareList}
                   />
                 </div>
-              </Route>
-              <Route path="/explore" component={Explore} />
-              <Route path="/history" component={History} />
-              <Route path="/bookmarks" component={Bookmarks} />
-            </Switch>
+              } />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/bookmarks" element={<Bookmarks />} />
+            </Routes>
           </div>
         </main>
       </div>
